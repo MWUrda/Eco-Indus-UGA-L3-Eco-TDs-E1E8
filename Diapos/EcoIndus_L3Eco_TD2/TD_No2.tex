@@ -1,0 +1,680 @@
+%\documentclass[ignorenonframetext, compress, 9pt, xcolor=svgnames]{beamer} 
+\input{../Config_diapos}
+\usepackage{color}
+\usepackage{tikz}
+
+
+\usepackage{enumerate}   
+
+
+%\setbeamersize{text margin left=1.5em,text margin right=1.5em} 
+%\setbeamersize{text margin left=1.2cm,text margin right=1.2cm} 
+\setbeamersize{text margin left=1.5em,text margin right=1.5em} 
+%\usepackage{xr}
+%\externaldocument{Econometrie1_UGA_P2e}
+  \usepackage{eso-pic}
+%\newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{%
+%\put(\LenToUnit{0.9\paperwidth},\LenToUnit{0.85\paperheight}){#1}}}
+%\AddToShipoutPictureFG{
+ % \AtPagemyUpperLeft{{\includegraphics[width=1.1cm,keepaspectratio]{logoUGA2020.pdf}}}
+%}%
+
+%\setbeamercolor{title}{fg=black}
+%\setbeamercolor{frametitle}{fg=black}
+%\setbeamercolor{section in head/foot}{fg=black}
+%\setbeamercolor{author in head/foot}{bg=Brown}
+%\setbeamercolor{date in head/foot}{fg=Brown}
+\setbeamertemplate{section page}
+{
+    \begin{centering}
+    \begin{beamercolorbox}[sep=11pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+    \end{centering}
+}
+%\titlegraphic{\includegraphics[width=1cm]{logoUGA2020.pdf}}
+\title[]{ \textbf{Économie Industrielle} \\ (UGA, L3 Éco, S2) \\ (responsable du cours: Sylvain Rossiaud)}
+\subtitle{Travaux dirigés: No 2\\ 
+Barrières stratégiques à l'entrée\\(éléments de correction d'exercices)}
+\date{\today}
+\author{Michal W. Urdanivia\inst{*}}
+\institute{\inst{*}UGA, Facult\'e d'\'Economie, GAEL, \\
+e-mail:
+ \href{
+     mailto:michal.wong-urdanivia@univ-grenoble-alpes.fr}{michal.wong-urdanivia@univ-grenoble-alpes.fr}}
+
+%\titlegraphic{\includegraphics[width=1cm]{logoUGA2020.pdf}
+%}
+
+\begin{document}
+%%% TIKZ STUFF
+\usetikzlibrary{positioning}
+\usetikzlibrary{snakes}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{matrix,shapes,arrows,fit,tikzmark}
+\usetikzlibrary{shapes}
+\tikzset{   
+        every picture/.style={remember picture,baseline},
+        every node/.style={anchor=base,align=center,outer sep=1.5pt},
+        every path/.style={thick},
+        }
+\newcommand\marktopleft[1]{
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-a) at (-.3em,.3em) {};%
+}
+\newcommand\markbottomright[2]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-b) at (0em,0em) {};%
+}
+\tikzstyle{every picture}+=[remember picture] 
+\tikzstyle{mybox} =[draw=black, very thick, rectangle, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} =[draw=black,fill=red, text=white]
+\tikzstyle{observed}=[draw,circle,fill=gray!50]
+
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Contenu}
+%\tableofcontents[pausesections, pausesubsections]
+%\end{frame}
+
+%\section{Qu'est-ce que l’économétrie ? A quoi (à qui) ça sert ?}
+%\frame{\sectionpage}
+%\begin{frame}
+%  \tableofcontents  
+%\end{frame}
+
+\section{Exercice 1}
+\frame{\sectionpage}
+
+\begin{frame}[allowframebreaks]{Modèle}
+\begin{itemize}
+\item Deux firmes produisent des biens homogènes où: 
+\begin{enumerate}[-]
+\item la firme 1 est leader:  elle fixe son niveau de production $q_1$,
+\item la firme 2 est suiveuse : elle choisit son niveau de production $q_2$ après avoir observé $q_1$
+\end{enumerate}
+\item Fonction de demande inverse: 
+\begin{align}
+    P(Q) &= 300 - Q, \ Q=q_1+q_2.
+\label{eq1}
+\end{align}
+\item Coûts fixes nuls, et coûts marginal constant:
+\begin{align}
+    c_i(q_i) &= 20q_i \Rightarrow c^{m}_i(q_i) :=\frac{\partial c_i(q_i)}{\partial q_i} = 20
+    \label{eq2}
+\end{align}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{(a) Fonction de meilleure réponse de la firme 2}
+    \begin{itemize}
+        \item Profit de $2$: 
+        \begin{align}
+            \pi_2(q_1, q_2) &= Pq_2 - c_2(q_2) = \underbrace{\left(300-(q_1+q_2)\right)}_{\text{en raison de \eqref{eq1}}}q_2 - 
+            \underbrace{20q_2}_{\text{par \eqref{eq2}}},
+            \label{eq3}
+        \end{align}
+        \item $2$ décide du niveau $q_2$ de sorte à maximiser $\pi_2$. Notons $q_2^*$ ce niveau qui est défini par:
+        \begin{align*}
+            q^*_2 &= \argmax_{q_2}  \left(300-(q_1+q_2)\right)q_2 - 20q_2,
+        \end{align*}
+         et vérifie la c.p.o.,
+         \begin{align}
+             \frac{\partial \pi_2(q_1, q_2^*)}{\partial q_2} = 0 \Leftrightarrow 280-q_1-2q^*_2 = 0,
+             \label{eq4}
+         \end{align}
+        qui défini $q^*_2$ comme fonction de $q_1$, c.à.d., \textbf{\underline{la fonction de meilleure réponse de 2}}. 
+        On la note $q^{mr}_2(q_1)$ et elle est donc donnée en utilisant \eqref{eq4} par,
+        \begin{align}
+            q^*_2 &= q^{mr}_2(q_1) = 140 - \frac{q_1}{2}
+           \label{eq5}
+        \end{align}
+    \end{itemize}
+
+\end{frame}
+    
+\begin{frame}[allowframebreaks]{(b) Équilibre}
+    \begin{enumerate}[(i)]
+        \item \textbf{\underline{Quantités}}: 
+        \begin{enumerate}[-]
+            \item La fonction de profit de 1 présente une forme similaire à celle de 2:
+            \begin{align}
+                \pi_1\left(q_1, q_2\right) &= Pq_1 - c_1(q_1) = \left(300-(q_1+q_2)\right)q_1 - 20q_1.
+                \label{eq6}
+            \end{align}
+            \item En outre 1 connaît le niveau de production que 2 fixe en fonction du sien, 
+            donné par \eqref{eq5} et ce faisant \eqref{eq6} peut s'écrire:
+            \begin{align}
+                \pi_1\left(q_1, q^{mr}_2(q_1)\right) &= \left(300-(q_1+q_2)\right)q_1 - 20q_1 \nonumber\\
+                &= 280q_1 - q_1^2 - q^{mr}_2(q_1)q_1 \nonumber \\
+                &= 280q_1 - q_1^2 - \underbrace{\left(140 - \frac{q_1}{2}\right)}_{=q^{mr}_2(q_1)}q_1\nonumber\\
+                &= 140 q_1 - \frac{q_1}{2} =: \pi(q_1),
+                \label{eq6}
+            \end{align}
+            qui ne dépends que de $q_1$. 
+            \item $1$ maximise donc \eqref{eq6}. Le maximum est atteint pour $q_1^*$ qui vérifie la c.p.o.:  
+            \begin{align}
+                \frac{\partial \pi_1(q_1^*)}{\partial q_1} =0 & \Leftrightarrow 
+                140 - q_1^* =0 \Rightarrow q_1^* = 140.
+                \label{eq7}
+            \end{align}
+            \item Il en résulte par \eqref{eq5}:
+            \begin{align*}
+                q^*_2 &= q^{mr}_2(q_1^*) = 140 - \frac{q_1^*}{2}=70.
+            \end{align*}
+            \item Ceci qui implique une quantité produite à l'équilibre de $Q^* = q_1^* + q_2^* = 210$, 
+            un prix de $P^* = P(Q^*) = 90$, pour de profits $\pi_1(q_1^*, q_2^*) = 9800$, et 
+            $\pi_1(q_1^*, q_2^*) = 4900$.
+        \end{enumerate}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{(c) Comparaison avec Cournot}
+\begin{itemize} 
+\item Pour rappel dans un Cournot de base(voir cours, et TD1) avec des coûts $c_i(q_i) = cq_i$, $c>0$, $i=1, 2$. et une
+demande $P(Q) = a - bQ$, $Q=q_1+q_2$, $a, b > 0$, on a(l'indice sup "ec" est pour "équilibre de Cournot")
+\begin{align*}
+    q_1^{(ec)} = q_2^{(ec)} = q^{(ec)} = \frac{a-c}{3b},
+\end{align*}
+d'où ici: 
+\begin{enumerate}[-]
+\item $q_1^{(ec)}=q_2^{(ec)}=280/3 \approx 93.3$, 
+\item $Q^{(ec)} = q_1^{(ec)}+q_2^{(ec)} \approx 186.7$,
+\item $P^{(ec)} \approx 113.3$.
+\item $\pi^{(ec)}_1 = \pi^{(ec)}_2 \approx 8704.9$.
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+
+\section{Exercice 2}
+\frame{\sectionpage}
+\begin{frame}[allowframebreaks]{(a) Demande résiduelle}
+\begin{itemize}
+    \item Deux firmes aux coûts respectifs: 
+    \begin{align}
+     c_1(q_1) = 20q_1 \ (\text{firme 1}) 
+     &,  \quad c_2(q_2) = 
+     \underbrace{100}_{\substack{\text{part fixe/}\\\text{non récupérable}}} + 20q_2 \ \text{(firme 2)}
+     \label{eq18}
+    \end{align}
+    \item \textbf{\underline{Remarque}}: la part fixe dans le coût de 2 donne un avantage 
+    à 1 qui est en place par rapport à 2 qui est l'entrant potentiel.
+    \item La demande sur le marché est donné par: 
+    \begin{align}
+        P&= P(Q) = 200 - \underbrace{(q_1 + q_2)}_{= Q}
+        \label{eq19}
+    \end{align}
+    \item \textbf{\underline{Remarque}}: on change un peu les notations par rapport à l'énoncé où $q_1=Q$, et $q_2 = q$. Ici donc  
+    $Q$ est la qté totale et $q_i$ celle produite par la firme $i=1, 2$.
+    \item \eqref{eq19} permet d'avoir la demande(inverse) résiduelle qui s'adresse à 2 lorsque 1 produit par exemple $q_1=Q_0\geq 0$: $P=200-Q_0-q_1$.
+\end{itemize}
+\end{frame}
+\begin{frame}[allowframebreaks]{(b) choix de 2}
+    \begin{itemize}
+    \item \textbf{\underline{Réponse de 2 pour $q_1$ donné}}:  
+    \begin{enumerate}[-]
+        \item Profit de 2:  
+        \begin{align}
+            \pi_2(q_2) &= \underbrace{Pq_2}_{=R_2(q_2)(\text{Recette})} -c_2(q_2) 
+            = \left(\underbrace{200 - q_1 + q_2}_{=P(\text{par \eqref{eq19}})}\right)q_2 -
+             \left( \underbrace{100 + 20q_2}_{=c_2(q_2)(\text{par \eqref{eq18}})}\right).
+             \label{eq20}
+        \end{align}
+        \item Notons $q_2^*$ le quantité qui maximise \eqref{eq20}, 
+        et peut être définie à partir de la c.p.o.,
+        \begin{align}
+            \frac{\partial \pi_2(q_2^*)}{\partial q_2} &=0\Leftrightarrow 180 - q_1-2q_2^{*}\Rightarrow 
+            q_2^{*} = 90 - \frac{q_1}{2}=: q_2^{mr}(q_1).
+            \label{eq21}
+        \end{align}
+        \item En particulier pour $q_1=Q_0$, le choix optimal de 2 sera $q_2^* = 90 - \frac{Q_0}{2}$.
+    \end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{c) Stratégie de "prix limite" de 1}
+    \begin{itemize}
+        \item Pour la stratégie consiste à choisir de produire une quantité $q_1^L$ telle qu'elle dissuade 2 
+        de décider d'entrer. 
+        \item Ce sera le cas(puisque les agents maximisent leur profit) si le profit de 2 est alors nul.
+        \item On a d'après \eqref{eq20}:
+        \begin{align}
+            \pi_2(q_2) &= (200 - q_1 + q_2)q_2 - (100 + 20q_2) = (180 - q_1-q_2)q_2 - 100.
+         \label{eq22}
+        \end{align}
+        \item D'après \eqref{eq22}:
+        \begin{align}
+            \pi_2(q_2) &= 0 \Leftrightarrow  (180 - q_1-q_2)q_2 - 100 = 0.
+            \label{eq23}
+        \end{align}
+        \item Lorsque 1 choisit $q_1^L$ telle que \eqref{eq23} le niveau 
+        que 2 décide est donné par $q_2^{mr}(q_1^L)$ en \eqref{eq21}. D'où:
+        \begin{align*}
+            \left(180-q_1^L - \left(\underbrace{90 - \frac{q_1^L}{2}}_{=q_2=:q_2^{mr}(q_1^L)}\right)\right)\left(
+                \underbrace{90 - \frac{q_1^L}{2}}_{=q_2=:q_2^{mr}(q_1^L)}\right) - 100 = 0& \Leftrightarrow 
+                \left(90-\frac{q_1^L}{2}\right)^2 -100=0\\
+                &\Rightarrow q_1^L = 160.
+        \end{align*}
+        \item Il s'ensuit que $P^L = P(q_1^L) = 40$, $\pi_1(q_1^L) = 3200$.
+        \item Lorsque 1 choisit $q_1^L$ elle ne maximise pas son profit 
+        mais en dissuadant 2 d'entrer(car son profit est nul) elle peut 
+        s'attendre à bénéficier de sa situation de monopole par la suite:
+        \begin{enumerate}[-]
+            \item En monopole 1 maximise
+            \begin{align*}
+                \pi_1(q_1) &= \underbrace{P(q_1)q_1}_{=:R_1(q_1)(\text{recette})} -c_1(q_1) = (200-q_1)q_1 - 20q_1.
+            \end{align*}
+            \item Notons $q_1^M$ le choix optimale de monople qui vérifie(c.p.o.): 
+            \begin{align*}
+                \frac{\partial \pi(q_1^M)}{\partial q_1} &= 0 \Leftrightarrow 180-2q_1^M = 0\Rightarrow q_1^M = 90,
+            \end{align*}
+            et alors $P^M=P(q_1^M) = 110$, et $\pi_1(q_1^M) = 8100 > \pi_1(q_1^L)$.
+        \end{enumerate}
+    \end{itemize}
+    \end{frame}
+\section{Exercice 3}
+\frame{\sectionpage}
+\begin{frame}[allowframebreaks]{Modèle}
+\begin{itemize}
+\item Une firme(la firme 1) produit en monopole un produit en quantité $q_1$.
+\item Le demande est donnée par la fonction de demande inverse: 
+\begin{align*}
+    P(Q) &= 50 - \frac{Q}{10}, 
+\end{align*}
+où $Q = q_1$ dès lors que la firme est en monopole.
+\item Et ce faisant sa recette peut s'écrire,
+\begin{align}
+    R_1(q_1) &= P(q_1)q_1 = 50q_1- \frac{q_1^2}{10} \Rightarrow R^m_1(q_1) := \frac{\partial R_1(q_1)}{\partial q_1} = 50-\frac{q_1}{5}
+\label{eq8}
+\end{align}
+où $R^m_1(q_1)$ est la recette marginale.
+\item Son coût est supposé:
+\begin{align}
+    c_1(q_1) &= \frac{q_1^2}{40} \Rightarrow c^m_1(q_1) = \frac{q_1}{20} > 0, \ \text{pour tout \ $q_1>0$(coût marginal croissant)}
+\label{eq9}
+\end{align}
+\end{itemize}
+    \end{frame}
+
+    \begin{frame}[allowframebreaks]{(a) Équilibre de monopole}
+        \begin{itemize}
+            \item La firme maximise son profit qui ne dépend que de $q_1$:
+            \item Profit de 1: 
+            \begin{align}
+                \pi_1(q_1) &=R_1(q_1) - c_1(q_1),
+                \label{eq10}
+            \end{align}
+            et il est facile de voir que la quantité $q_1^*$ qui maximise \eqref{eq10} vérifie(c.p.o.)
+            \begin{align}
+                \frac{\partial \pi_1(q_1^*)}{\partial q_1} &= 0 \Leftrightarrow  R^m_1(q_1^*) = c^m_1(q_1^*),
+                \label{eq11}
+            \end{align}
+            d'où par \eqref{eq8}, \eqref{eq9} et \eqref{eq10}:
+            \begin{align*}
+                 50-\frac{q_1^*}{5}=\frac{q_1^*}{20} \Rightarrow q_1^* = 200,
+            \end{align*}
+            le prix d'équilibre étant $P^* := P(q_1^*) = 30$.
+        \end{itemize}
+    \end{frame}   
+
+
+\begin{frame}[allowframebreaks]{(b) Marché contestable(2ème firme)}
+    \begin{itemize}
+        \item Produire est plus coûteux pour 2 avec: 
+        \begin{align}
+            c_2(q_2) &= 10q_2 + \frac{q_2^2}{40} \Rightarrow c^m_2(q_2) = 10 + \frac{q_2}{20}.
+            \label{eq12}
+        \end{align}
+        \item  \textbf{\underline{Demande résiduelle}} pour 2 quand 1 conserve le niveau de production $q_1= q_1^* = 200$. 
+        \begin{enumerate}[-]
+            \item La recette de 2 comme fonction de $q_1$ est:
+            \begin{align}
+                R_2(q_2) &=Pq_2= P(\underbrace{q_1^* + q_2}_{=Q})q_2 = 
+                \left(50 - \frac{(q_1^* + q_2)}{10}\right)q_2 = \frac{(500-q_1)q_2}{10} -\frac{q_2^2}{10}
+                \label{eq13}
+            \end{align}
+            \item Et son profit peut s'écrit:  
+            \begin{align}
+                \pi_2(q_2) &= R_2(q_2) - c_2(q_2) = \underbrace{\frac{(500-q_1)q_2}{10} -\frac{q_2^2}{10}}_{=R_2(q_2) \ \text{par \eqref{eq13}}}
+                - \underbrace{(10q_2 + \frac{q_2^2}{40})}_{c_2(q_2),  \ \text{par \eqref{eq12}}}
+                \label{eq14}
+            \end{align}
+            \item On note $q_2^*$ la quantité qui maximise \eqref{eq14} et vérifie donc(c.p.o.):  
+            \begin{align}
+                \frac{\partial \pi(q_2^*)}{\partial q_2} &=0 \Leftrightarrow \frac{(500-q_1)}{10} - 10 -  \frac{q_2^*}{4} = 0
+                 \Rightarrow q_2^* = 160 - \frac{2q_1}{5}=: q_2^{mr}(q_1),
+                 \label{eq15}
+            \end{align}
+            et pour $q_1 = q_1^*=200$, on obtient $q_2^* = 80$ d'où  $Q^* = q_1^* + q_2^* = 280$, $P^* := P(Q^*) = 22$.
+        \end{enumerate}
+    \end{itemize}
+\end{frame}   
+
+\begin{frame}[allowframebreaks]{(c) Stratégie de prix limite}
+\begin{itemize}
+\item 2 n'a que des coût variables et ce faisant $\pi_2 = 0 \Leftrightarrow q_2 = 0$.  
+\item En utilisant  $q_2^{mr}(q_1)$ définie dans \eqref{eq15} on a: 
+\begin{align*}
+    q_2^{mr}(q_1) &= 0 \Leftrightarrow 160 - \frac{2q_1}{5} = 0 \Leftrightarrow q_{(1, q_2=0)} = 400=:q_1^L,
+\end{align*}
+où l'indice inf "$q_2=0$" est là pour indiquer que c'est le niveau de $q_1$ tel que $q_2=0$,  et 
+qui définit ici le \textbf{\underline{la quantité associée au prix limite}}, c.à.d., pour lequel $\pi_2=0$, qu'on note $q_1^L$ ci-dessus. 
+\item On note $Q^L = q_1^L + 0$ la quantité totale produite, et $P^L:=P(Q^L) = 10$, le prix limite.
+\item On calcule aussi le profit obtenu par 1: 
+\begin{align*}
+    \pi_1(q_1^L)&=P^L q_1^L - c_1(q_1^L) = 0
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{(d) Cournot}
+    \begin{itemize}
+        \item En concurrence à la Cournot le profit de 1 s'écrit: 
+        \begin{align}
+            \pi_1(q_1, q_2) &= P(\underbrace{Q}_{=q_1+ q_2})q_1 - c_1(q_1) = \left(50-\frac{(q_1+q_2)}{10}\right)q_1  - \frac{q_1^2}{40}   -
+            =  50 q_1 -\frac{q_1q_2}{10} - \frac{q_1^2}{8},
+            \label{eq16}
+        \end{align}
+        qu'on maximise pour obtenir $q_1^{*c}$ la quantité qui maximise le profit de 1 en Cournot. Elle vérifie(c.p.o.)
+        \begin{align}
+            \frac{\partial \pi_1(q_1^{*c}, q_2)}{\partial q_1} &= 0 \Leftrightarrow 50 - \frac{q_2}{10} -  
+            \frac{q_1^{*c}}{4} = 0 \Rightarrow q_1^{*c} = 200-\frac{2 q_2}{5} =: q_1^{mr}(q_2).
+            \label{eq17}
+        \end{align}
+        \item En utilise les meilleures réponses $q_1^{mr}(q_2)$ donnée ci-dessus et $q_2^{mr}(q_1)$ donnée en \eqref{eq15} pour obtenir: 
+        \begin{align*}
+            q_1^{*c} &= 200-\frac{2}{5}\left( \underbrace{160 - \frac{2q_1^{*c}}{5}}_{=q_2^{mr}} \right)   
+            \Leftrightarrow \frac{21q_1^{*c}}{25} = 136     \Rightarrow    q_1^{*c} \approx 161.9
+         \end{align*}
+         d'où, 
+         \begin{align*}
+            q_2^{*c} &= q_2^{mr}(q_1^{*c}) \approx 95.2.
+        \end{align*}
+        \item On calcule aussi $Q^{*c} = q_1^{*c} + q_2^{*c}\approx 257.1$ et $P^{*c} = P(Q^{*c}) \approx 24.3$.
+        \item Finalement comme: 
+        \begin{align*}
+          \pi_1(q_1^{*c}) &=  P^{*c}q_1^{*c} - c_1(q_1^{*c}) \approx 3278.9 > \pi_1(q_1^L) = 0
+        \end{align*}
+        la stratégie de prix limite par 1 n'apparaît pas crédible du point de vue de 2, car 1 a intérêt à une
+         concurrence à la Cournot qui lui permet un profit non nul. 
+    \end{itemize}
+\end{frame}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
