@@ -134,7 +134,7 @@ e-mail:
         qui défini $q^*_2$ comme fonction de $q_1$, c.à.d., \textbf{\underline{la fonction de meilleure réponse de 2}}. 
         On la note $q^{mr}_2(q_1)$ et elle est donc donnée en utilisant \eqref{eq4} par,
         \begin{align}
-            q^*_2 &= q^{mr}_2(q_1) = 140 - \frac{q_1}{2}
+            q^*_2 & = 140 - \frac{q_1}{2}=: q^{mr}_2(q_1)
            \label{eq5}
         \end{align}
     \end{itemize}
@@ -156,7 +156,7 @@ e-mail:
                 \pi_1\left(q_1, q^{mr}_2(q_1)\right) &= \left(300-(q_1+q_2)\right)q_1 - 20q_1 \nonumber\\
                 &= 280q_1 - q_1^2 - q^{mr}_2(q_1)q_1 \nonumber \\
                 &= 280q_1 - q_1^2 - \underbrace{\left(140 - \frac{q_1}{2}\right)}_{=q^{mr}_2(q_1)}q_1\nonumber\\
-                &= 140 q_1 - \frac{q_1}{2} =: \pi(q_1),
+                &= 140 q_1 - \frac{q_1^2}{2} =: \pi(q_1),
                 \label{eq6}
             \end{align}
             qui ne dépends que de $q_1$. 
@@ -171,26 +171,35 @@ e-mail:
                 q^*_2 &= q^{mr}_2(q_1^*) = 140 - \frac{q_1^*}{2}=70.
             \end{align*}
             \item Ceci qui implique une quantité produite à l'équilibre de $Q^* = q_1^* + q_2^* = 210$, 
-            un prix de $P^* = P(Q^*) = 90$, pour de profits $\pi_1(q_1^*, q_2^*) = 9800$, et 
-            $\pi_1(q_1^*, q_2^*) = 4900$.
+            un prix de $P^* = P(Q^*) = 90$, pour de profits $\pi_1(q_1^*) = 9800$, et 
+            $\pi_2(q_2^*) = 4900$.
         \end{enumerate}
     \end{enumerate}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{(c) Comparaison avec Cournot}
 \begin{itemize} 
-\item Pour rappel dans un Cournot de base(voir cours, et TD1) avec des coûts $c_i(q_i) = cq_i$, $c>0$, $i=1, 2$. et une
-demande $P(Q) = a - bQ$, $Q=q_1+q_2$, $a, b > 0$, on a(l'indice sup "ec" est pour "équilibre de Cournot")
+\item Pour rappel dans un Cournot de base(voir cours, et TD1) avec:
+\begin{enumerate}[-]
+\item des coûts $c_i(q_i) = cq_i$, $c>0$, $i=1, 2$,
+\item et une demande $P(Q) = a - bQ$, $Q=q_1+q_2$, $a, b > 0$,
+\end{enumerate}
+l'équilibre est (où l'indice sup "ec" est pour "équilibre de Cournot"):
 \begin{align*}
     q_1^{(ec)} = q_2^{(ec)} = q^{(ec)} = \frac{a-c}{3b},
 \end{align*}
-d'où ici: 
+d'où ici(avec $a=300, b=1, c=20$): 
 \begin{enumerate}[-]
 \item $q_1^{(ec)}=q_2^{(ec)}=280/3 \approx 93.3$, 
 \item $Q^{(ec)} = q_1^{(ec)}+q_2^{(ec)} \approx 186.7$,
 \item $P^{(ec)} \approx 113.3$.
 \item $\pi^{(ec)}_1 = \pi^{(ec)}_2 \approx 8704.9$.
 \end{enumerate}
+
+\item \textbf{\underline{Remarque}}: en Cournot les meilleures réponses sont pour $i=1, 2$:
+\begin{align*}
+    q_i^{mr}&=\frac{(a-b)}{2b} - \frac{q_j}{2}, \ j=1, 2, j\neq i.
+\end{align*} 
 \end{itemize}
 \end{frame}
 
@@ -243,7 +252,7 @@ d'où ici:
 
 \begin{frame}[allowframebreaks]{c) Stratégie de "prix limite" de 1}
     \begin{itemize}
-        \item Pour la stratégie consiste à choisir de produire une quantité $q_1^L$ telle qu'elle dissuade 2 
+        \item Pour 1 la stratégie consiste à choisir de produire une quantité $q_1^L$ telle qu'elle dissuade 2 
         de décider d'entrer. 
         \item Ce sera le cas(puisque les agents maximisent leur profit) si le profit de 2 est alors nul.
         \item On a d'après \eqref{eq20}:
