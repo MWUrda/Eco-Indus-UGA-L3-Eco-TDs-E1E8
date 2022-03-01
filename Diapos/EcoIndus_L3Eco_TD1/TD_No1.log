@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.11.10)  15 FEB 2022 14:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.11.10)  28 FEB 2022 10:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -97,8 +97,8 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 
 Class beamer Warning: This option is obsolete. Use beamer option ``show notes'' instead. on input line 336.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/extsizes/size9.clo
+File: size9.clo 1999/11/11 v1.4a NON-Standard LaTeX file (size option)
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
  (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
@@ -1457,26 +1457,26 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 ) (/Volumes/GoogleDrive/Mon Drive/Syllabus/Eco-Indus-UGA-L3-Eco-TDs-E1E8/Diapos/EcoIndus_L3Eco_TD1/TD_No1.aux)
 \openout1 = `TD_No1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 48.
-LaTeX Font Info:    Try loading font information for LGR+cmr on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 49.
+LaTeX Font Info:    Try loading font information for LGR+cmr on input line 49.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/cbfonts-fd/lgrcmr.fd
 File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
 )
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    ... okay on input line 49.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1497,12 +1497,12 @@ LaTeX Font Info:    ... okay on input line 48.
 * \topmargin=-72.26999pt
 * \headheight=14.22636pt
 * \headsep=0.0pt
-* \topskip=11.0pt
+* \topskip=9.0pt
 * \footskip=14.22636pt
 * \marginparwidth=4.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=8.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1538,7 +1538,7 @@ Package grfext Info: Graphics extension search list:
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box93
-Package hyperref Info: Link coloring ON on input line 48.
+Package hyperref Info: Link coloring ON on input line 49.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -1546,66 +1546,66 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count392
 )
-LaTeX Info: Redefining \ref on input line 48.
-LaTeX Info: Redefining \pageref on input line 48.
-LaTeX Info: Redefining \nameref on input line 48.
+LaTeX Info: Redefining \ref on input line 49.
+LaTeX Info: Redefining \pageref on input line 49.
+LaTeX Info: Redefining \nameref on input line 49.
  (/Volumes/GoogleDrive/Mon Drive/Syllabus/Eco-Indus-UGA-L3-Eco-TDs-E1E8/Diapos/EcoIndus_L3Eco_TD1/TD_No1.out) (/Volumes/GoogleDrive/Mon Drive/Syllabus/Eco-Indus-UGA-L3-Eco-TDs-E1E8/Diapos/EcoIndus_L3Eco_TD1/TD_No1.out)
 \@outlinefile=\write6
 \openout6 = `TD_No1.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 48.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 49.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 48.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 49.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 48.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 48.
+(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 49.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 48.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 48.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 48.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 49.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 48.
+(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 48.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 48.
+(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 49.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 48.
+(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 48.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 48.
+(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 49.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 48.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 48.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 49.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 48.
+(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 49.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 48.
+(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmr/bx/n on input line 48.
+(Font)                  OT1/cmss/bx/n --> T1/cmr/bx/n on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/cmss/bx/n --> T1/cmss/bx/n on input line 48.
+(Font)                  T1/cmss/bx/n --> T1/cmss/bx/n on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 48.
+(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 48.
+(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 49.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/cmtt/m/n --> T1/cmtt/bx/n on input line 48.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 48.
+(Font)                  T1/cmtt/m/n --> T1/cmtt/bx/n on input line 49.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 49.
 LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `normal' on input line 48.
+(Font)              `pureletters' in the math version `normal' on input line 49.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  T1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 48.
+(Font)                  T1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 49.
 LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `bold' on input line 48.
+(Font)              `pureletters' in the math version `bold' on input line 49.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 48.
+(Font)                  T1/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 49.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 48.
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 49.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
@@ -1626,15 +1626,15 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
 \c@lstlisting=\count393
-LaTeX Info: Redefining \degres on input line 48.
-LaTeX Info: Redefining \dots on input line 48.
+LaTeX Info: Redefining \degres on input line 49.
+LaTeX Info: Redefining \dots on input line 49.
 
 
 Package french.ldf Warning: Please load the "listings" package
-(french.ldf)                AFTER babel/french; reported on input line 48.
+(french.ldf)                AFTER babel/french; reported on input line 49.
 
-LaTeX Info: Redefining \up on input line 48.
-LaTeX Info: Redefining \microtypecontext on input line 48.
+LaTeX Info: Redefining \up on input line 49.
+LaTeX Info: Redefining \microtypecontext on input line 49.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1656,19 +1656,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for U+msa on input line 81.
+LaTeX Font Info:    Try loading font information for U+msa on input line 82.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 81.
+LaTeX Font Info:    Try loading font information for U+msb on input line 82.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input line 81.
+LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input line 82.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
@@ -1690,13 +1690,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 ] [6
 
 ]
-Overfull \hbox (7.52837pt too wide) detected at line 195
-[]
- []
-
 
 LaTeX Warning: The counter will not be printed.
-             The label is: - on input line 195.
+             The label is: - on input line 196.
 
 [7
 
@@ -1704,12 +1700,6 @@ LaTeX Warning: The counter will not be printed.
 
 
 ] [9
-
-
-] [10
-
-] [11
-
 
 ]
 \tf@nav=\write7
@@ -1721,27 +1711,27 @@ LaTeX Warning: The counter will not be printed.
 \tf@snm=\write9
 \openout9 = `TD_No1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 232.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 232.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 233.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 233.
  (/Volumes/GoogleDrive/Mon Drive/Syllabus/Eco-Indus-UGA-L3-Eco-TDs-E1E8/Diapos/EcoIndus_L3Eco_TD1/TD_No1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 232.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 232.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 233.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 233.
 Package rerunfilecheck Info: File `TD_No1.out' has not changed.
 (rerunfilecheck)             Checksum: E125EDF5DC5D9FE2806B0C2253A6F042;90.
  ) 
 Here is how much of TeX's memory you used:
- 36414 strings out of 492649
- 699203 string characters out of 6129621
- 829258 words of memory out of 5000000
- 39607 multiletter control sequences out of 15000+600000
- 549357 words of font info for 78 fonts, out of 8000000 for 9000
+ 36388 strings out of 492649
+ 698638 string characters out of 6129621
+ 830152 words of memory out of 5000000
+ 39580 multiletter control sequences out of 15000+600000
+ 545425 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  65i,18n,71p,10539b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on "/Volumes/GoogleDrive/Mon Drive/Syllabus/Eco-Indus-UGA-L3-Eco-TDs-E1E8/Diapos/EcoIndus_L3Eco_TD1/TD_No1.pdf" (11 pages, 184150 bytes).
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb>
+Output written on "/Volumes/GoogleDrive/Mon Drive/Syllabus/Eco-Indus-UGA-L3-Eco-TDs-E1E8/Diapos/EcoIndus_L3Eco_TD1/TD_No1.pdf" (9 pages, 182952 bytes).
 PDF statistics:
- 188 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
- 29 named destinations out of 1000 (max. 500000)
- 26689 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 174 PDF objects out of 1000 (max. 8388607)
+ 124 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 500000)
+ 20545 words of extra memory for PDF output out of 20736 (max. 10000000)
 

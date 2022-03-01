@@ -1,4 +1,4 @@
-\documentclass[notes, ignorenonframetext, compress, 11pt, xcolor=svgnames, aspectratio=169]{beamer} 
+\documentclass[notes, ignorenonframetext, compress, 9pt, xcolor=svgnames, aspectratio=169]{beamer} 
 \usepackage{pgfpages}
 \usepackage{pdfpages}
 % These slides also contain speaker notes. You can print just the slides,
@@ -262,7 +262,7 @@ linkbordercolor=linkequation,
 \newtheorem*{exemple*}{Exemple}
 
 \newtheorem{theoreme}{Théorème}
-\newtheorem{proposition}{Proposition}
+%\newtheorem{proposition}{Proposition}
 %\newtheorem{propriete}{Propri\'et\'e}
 \newtheorem{corollaire}{Corollaire}
 %\newtheorem{exemple}{Exemple}
@@ -587,9 +587,21 @@ linkbordercolor=linkequation,
   \setbeamercolor{block body}{fg=black, bg=gray!10}
 }
 
-
-
-
+% proposition
+\newtheorem{proposition}{Proposition}
+\BeforeBeginEnvironment{proposition}{
+  \setbeamerfont{block body}{shape=\itshape}
+  \setbeamerfont{block title}{series=\bfseries}
+  \setbeamercolor{block title}{fg=MidnightBlue,bg=white}
+  \setbeamercolor{block body}{fg=black, bg=gray!10}
+}
+\newtheorem*{proposition*}{Proposition}
+\BeforeBeginEnvironment{proposition*}{
+  \setbeamerfont{block body }{shape=\itshape}
+  \setbeamerfont{block title}{series=\bfseries}
+  \setbeamercolor{block title}{fg=MidnightBlue,bg=white}
+  \setbeamercolor{block body}{fg=black, bg=gray!10}
+}
 
 
 
