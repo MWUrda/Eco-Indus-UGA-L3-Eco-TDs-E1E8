@@ -1,0 +1,4 @@
+\babel@toc {french}{}
+\beamer@sectionintoc {1}{TD1: \citet {ArquieBertin2020}}{3}{0}{1}
+\beamer@sectionintoc {2}{TD2: Transdev Group versus SNCF (Ouibus)}{12}{0}{2}
+\beamer@sectionintoc {3}{TD3: \citet {CombeMonierREF2012} }{15}{0}{3}
