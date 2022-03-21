@@ -1,0 +1,396 @@
+%\documentclass[ignorenonframetext, compress, 9pt, xcolor=svgnames]{beamer} 
+\input{../Config_diapos}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{enumerate}   
+\usepackage{multirow}
+%\setbeamersize{text margin left=1.5em,text margin right=1.5em} 
+%\setbeamersize{text margin left=1.2cm,text margin right=1.2cm} 
+\setbeamersize{text margin left=1.5em,text margin right=1.5em} 
+%\usepackage{xr}
+%\externaldocument{Econometrie1_UGA_P2e}
+  \usepackage{eso-pic}
+%\newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{%
+%\put(\LenToUnit{0.9\paperwidth},\LenToUnit{0.85\paperheight}){#1}}}
+%\AddToShipoutPictureFG{
+ % \AtPagemyUpperLeft{{\includegraphics[width=1.1cm,keepaspectratio]{logoUGA2020.pdf}}}
+%}%
+
+%\setbeamercolor{title}{fg=black}
+%\setbeamercolor{frametitle}{fg=black}
+%\setbeamercolor{section in head/foot}{fg=black}
+%\setbeamercolor{author in head/foot}{bg=Brown}
+%\setbeamercolor{date in head/foot}{fg=Brown}
+\setbeamertemplate{section page}
+{
+    \begin{centering}
+    \begin{beamercolorbox}[sep=11pt,center]{part title}
+    \usebeamerfont{section title}\thesection.~\insertsection\par
+    \end{beamercolorbox}
+    \end{centering}
+}
+%\titlegraphic{\includegraphics[width=1cm]{logoUGA2020.pdf}}
+\title[]{ \textbf{Économie Industrielle}\footnote{responsable du cours: Sylvain Rossiaud} \\ (UGA, L3 Éco, S2) \\ }
+\subtitle{Travaux dirigés: No 4\\ Ententes Verticales\\
+(éléments de correction)}
+\date{\today}
+\author{Michal W. Urdanivia\inst{*}}
+\institute{\inst{*}UGA, Facult\'e d'\'Economie, GAEL, \\
+e-mail:
+ \href{
+     mailto:michal.wong-urdanivia@univ-grenoble-alpes.fr}{michal.wong-urdanivia@univ-grenoble-alpes.fr}}
+
+%\titlegraphic{\includegraphics[width=1cm]{logoUGA2020.pdf}
+%}
+
+\begin{document}
+
+%%% TIKZ STUFF
+\usetikzlibrary{positioning}
+\usetikzlibrary{snakes}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{matrix,shapes,arrows,fit,tikzmark}
+\usetikzlibrary{shapes}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzset{   
+        every picture/.style={remember picture,baseline},
+        every node/.style={anchor=base,align=center,outer sep=1.5pt},
+        every path/.style={thick},
+        }
+\newcommand\marktopleft[1]{
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-a) at (-.3em,.3em) {};%
+}
+\newcommand\markbottomright[2]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-b) at (0em,0em) {};%
+}
+\tikzstyle{every picture}+=[remember picture] 
+\tikzstyle{mybox} =[draw=black, very thick, rectangle, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} =[draw=black,fill=red, text=white]
+\tikzstyle{observed}=[draw,circle,fill=gray!50]
+
+\begin{frame}
+\titlepage
+\end{frame}
+\begin{frame}
+ \tableofcontents
+    \end{frame}
+%\begin{frame}
+%\frametitle{Contenu}
+%\tableofcontents[pausesections, pausesubsections]
+%\end{frame}
+
+%\section{Qu'est-ce que l’économétrie ? A quoi (à qui) ça sert ?}
+%\frame{\sectionpage}
+%\begin{frame}
+%  \tableofcontents  
+%\end{frame}
+
+
+\section{Rappels sur la double marge et exercice d'application}
+\frame{\sectionpage}
+\begin{frame}[allowframebreaks]{Le cadre}
+\begin{itemize}
+\item \textbf{\underline{Référence}}: \cite{belleflamme_peitz_2015}, chapitre 17(section 17.1).
+\item Cadre: des firmes dans une chaîne de production/offre verticale. 
+\item Exemple:
+\begin{enumerate}[$\star$]
+    \item Une firme produit un bien intermédiaire(c.à.d, l'input) dans la production d'un bien final 
+    par une autre firme. 
+    \item Une firme produit un bien final qui est distribué sur le marché par une autre firme. 
+    \item \ldots
+\end{enumerate} 
+\item Chaque firme associée à un niveau de la chaîne possède potentiellement un pouvoir de marché 
+et la modélisation doit en tenir compte pour pouvoir décrire les marchés considérés et répondre à des questions telles que: 
+\begin{enumerate}[$\star$]
+\item L'effet de l'intégration verticale?
+\item Une firme en amont(e.g., productrice d'un bien) peut-elle empêcher des concurrents 
+d'accéder en faisant des accords d'exclusivité avec des firmes en aval(e.g., les distributeurs)?
+\end{enumerate} 
+
+\framebreak
+
+\item L'inefficacité du fonctionnement de ces marchés est le problème de la  \textbf{\underline{Double marge}}:
+\begin{enumerate}[$\star$]
+\item Sur un marché dans lequel les firmes n'opèrent qu'à un seul niveau de la chaîne verticale d'offre 
+les prix de distribution sont plus élevés que sur un marché verticalement intégré car une firme 
+en aval(c.à.d., le distributeur) applique une marge sur le prix de vente du bien final qui intègre la marge appliquée 
+par la firme en amont(c.à.d., le producteur).
+\end{enumerate}
+\end{itemize}
+\end{frame}
+\begin{frame}[allowframebreaks]{Illustration be base: prix linéaires et double marge}
+\begin{itemize}
+\item Marché monopolistique pour un bien final. 
+\item Deux firmes à deux niveaux de la chaîne: une firme en amont appelée "producteur", firme en aval appelée "distributeur".
+\item Demande sur le marché: 
+\begin{align*}
+    q(p) &= a-bp, \quad a, b > 0
+\end{align*}
+\item Les coûts de production(pour la firme en amont) correspondent à un coût marginal constant:
+\begin{align*}
+    c(q) &= cq \Rightarrow c^{m}(q) := \frac{\partial c}{\partial q}(q) = c, \quad c<\frac{a}{b}.
+\end{align*}
+\item Les coûts de distribution sont supposés nuls(pour la firme en aval). 
+\item Jeux en deux étapes: à la première le producteur fixe le prix de vente $w$, et à la deuxième le distributeur fixe 
+le prix à la distribution $p$ ayant observé $w$. 
+
+
+\framebreak
+
+\tikzstyle{contour} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black,
+ fill=gray!30]
+ \tikzstyle{arrow} = [thick,->,>=stealth]
+\begin{figure}
+\begin{tikzpicture}[node distance=2cm]
+    \node (start) [contour] {Producteur: $\pi_p(w, p) = wq(p) - cq(p)$.};
+    \node (in1) [contour, below of=start] {Distributeur: $\pi_d(w, p) = pq(p) - wq(p)$.};
+    \node (pro1) [contour, below of=in1] {Demande: $q(p)=a-bp$.};
+    \draw [arrow] (start) -- (in1);
+\draw [arrow] (in1) -- (pro1);
+\end{tikzpicture}
+\end{figure}
+
+\framebreak
+
+\item Résolution par induction à rebours:
+\begin{enumerate}[$\star$]
+\item \textbf{Dernière étape}: le distributer fixe son prix $p^*$ en maximisant son profit: 
+\begin{align*}
+    \pi_d(p, w) &= (a-bp)(p-w) \Rightarrow \underbrace{\frac{\partial \pi_d}{\partial p}(p^*) = 0}_{c.p.o.} \Leftrightarrow p^*(w) = \frac{a+bw}{2b}
+\end{align*}
+\item \textbf{Première étape}: le producteur maximise sont profit sachant que la demande est:
+\begin{align*}
+    q(p^*) &= a-b\left(\underbrace{\frac{a+bw}{2b}}_{=p^*(w)}\right) = \frac{a-bw}{2},
+\end{align*}
+et le profit à maximiser est:
+\begin{align}
+    \pi_p(w) &= \left(\frac{a-bw}{2}\right)(w - c) \Rightarrow \underbrace{\frac{\partial \pi_p}{\partial w}(w^*) = 0}_{c.p.o.} 
+    \Leftrightarrow w^* = \frac{a}{2b} + \frac{c}{2} 
+    \label{eq1}
+\end{align}
+d'où:
+\begin{align}
+p^* &:= p^*(w^*) = \frac{a+bw^*}{2b} = \frac{a}{2b} + \frac{w^*}{2} = \frac{3a}{4b} +\frac{c}{4}, \nonumber\\
+q^* &= q(p^*) = a-bp^* = a-b\left(\frac{3a}{4b} +\frac{c}{4}\right)=\frac{a}{4} - \frac{bc}{4}
+\label{eq2}
+\end{align}
+\end{enumerate}
+\item Il est alors facile de vérifier qu'avec $c<\frac{a}{b}$,  que le prix $p^*$ et la quantité $q^*$ sont respectivement plus élevé, et plus bas 
+que ceux à l'équilibre du monopole, qui correspond à celui où les deux activités de production et distribution sont intégrées.
+\item En effet en monopole le prix d'équilibre vérifie la c.p.o. dans la maximisation du profit de monopole: 
+\begin{align}
+\pi_m(p) &= pq(p) - c(q(p)) = pq(p) - cq(p)= (p - c)q(p) \Rightarrow \underbrace{\frac{\partial \pi_m}{\partial p}(p^m) = 0 }_{c.p.o.} \Leftrightarrow p^m = \frac{a}{2b} + \frac{c}{2},
+\label{eq3}
+\end{align}
+où l'on note $p^m$ le prix d'équilibre en monopole, et l'on vérifie que:
+\begin{align*}
+p^* - p^m &= \frac{a}{4b} - \frac{c}{4} = \frac{1}{4}\left(\frac{a}{b}- c\right) > 0 \Leftrightarrow \frac{a}{b} > c.
+\end{align*}
+On peut aussi vérifier que:
+
+\begin{enumerate}[$\star$]
+\item Le profit obtenu en monopole est plus élevé que le profit total sans intégration. 
+\item La quantité sur le marché est plus élevée en monopole que sans intégration. 
+\end{enumerate}
+
+\item Il y a donc une forte incitation à l'intégration des deux activités au sein d'une seule firme, 
+aussi bien du point de vue des firmes(profits plus élevés avec intégration), que des consommateurs(prix plus bas avec intégration).
+\item Ceci est illustré numériquement dans l'exercice du TD.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Application: exercice Renault et concessionnaire}
+\begin{enumerate}
+\item On applique les résultats du modèle précédent avec ici les valeurs numériques 
+sur la demande et le coût:
+\begin{align*}
+    q(p) &= \underbrace{180}_{=:a} - \underbrace{10}_{=:b}p, \quad c^m(q) = \underbrace{4}_{=:c}.
+\end{align*}
+et obtient par \eqref{eq1} et \eqref{eq2}:
+\begin{align*}
+    w^* &= \frac{a}{2b} + \frac{c}{2} = 11,\\
+    p^* &=  \frac{3a}{4b} +\frac{c}{4} = 14.5\\
+    q^* &= \frac{a}{4} - \frac{bc}{4} = 35.
+\end{align*}
+On peut aussi calculer le profits à l'équilibre: 
+\begin{align*}
+\pi_d^*(w^*, p^*, q^*) &= (p^* - w^*) q^* = 122.5,\\
+\pi_p^*(w^*, q^*) &= w^*q^* - c(q^*) = 237.
+\end{align*}
+\item Dans le cas d'un intégration le prix d'équilibre est celui donné par \eqref{eq3}, et l'on calcule aussi la 
+quantité et le profit d'équilibre:
+\begin{align*}
+p^m &=  \frac{a}{2b} + \frac{c}{2} = 11,\\
+q^m &:=q(p^m) = 180 - 10p^m = 70,\\
+\pi^m &:= \pi_m(p^m, q^m)= 482.
+\end{align*}
+\item Cet exercice illustre ce qui a été indiqué plus haut avec: 
+\begin{enumerate}[$\star$]
+\item Un profit total plus bas sans intégration qu'avec(respectivement $122.5 + 237 = 359.5$ contre $482$),
+\item un prix plus élevé sans intégration qu'avec(respectivement $14.5$ contre $11$).
+\item Il y a donc une incitation forte à l'intégration du fait de l'externalité 
+négative produite par l'absence de coordination entre les deux firme et se traduisant 
+par la double marge: le concessionnaire en imposant sa marge sur le prix en impose une deuxième. 
+\end{enumerate}
+\item Le problème de la DM peut être résolu par le biais d'ententes verticales:
+\begin{enumerate}[$\star$]
+    \item La question est celle de la possibilité par le producteur, dans ce cas Renault, 
+    d'éviter que le distributeur/concessionnaire impose sa marge sur le prix, 
+    cela par l'incitation ou la contrainte.
+    \item Rappel des points traités en cours:
+    \begin{enumerate}[$\star$]
+        \item tarification en deux parties,
+        \item prix de vente imposé/conseillé,
+        \item quota de vente minimale.
+    \end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\end{frame}
+
+\section{Analyse de cas}
+\frame{\sectionpage}
+
+\begin{frame}[allowframebreaks]{Le cas}
+    \begin{itemize}
+        \item Décision/sanction par l'autorité de la concurrence:
+    \begin{mdframed}
+    En 2007, 
+    l’Autorité de la concurrence française a sanctionné à hauteur de 37 millions
+     d’euros cinq fabricants de jouets et trois distributeurs pour ententes verticales. 
+     Selon le communiqué de presse de l’Autorité de la concurrence, les « fournisseurs en 
+     cause se sont entendus avec l’ensemble de leurs distributeurs afin que leurs produits 
+     soient vendus au même prix dans tous les points de vente ».
+    \end{mdframed}
+    \item c.f. 
+    \url{https://www.autoritedelaconcurrence.fr/fr/communiques-de-presse/20-decembre-2007- ententes-de-prix-dans-le-secteur-de-la-distribution-des}
+\end{itemize}
+\framebreak
+\begin{enumerate}[(a)]
+    \item \underline{\textbf{Entente verticale (ou restriction verticale)}}: 
+    \begin{enumerate}[$\star$]
+        \item Selon la définition de la commission européenne :
+    \begin{mdframed}
+        Accord ou une pratique concertée entre deux ou plusieurs entreprises opérant chacune, 
+        aux fins de l’accord ou de la pratique concernée, à un niveau diffèrent de la chaîne 
+        de production ou de distribution, et relatif aux conditions 
+        auxquelles les parties peuvent acheter, vendre ou revendre certains biens et services
+    \end{mdframed}
+    \item Voir 
+    \href{https://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=CELEX:52010SC0411&from=FR}{
+        \emph{Lignes directrices de la Commission Européenne sur les Restrictions Verticales, 2010}}
+        (page 13, section 2)
+    \item Contrats de long terme ou d’ententes entre un/des fournisseur(s) et un/des distributeur(s) 
+    qui vont au-delà 
+    de la définition d’un tarif unitaire sur le marché des B$\&$S intermédiaires. 
+    \item Par les ententes verticales, les acteurs restreignent le comportement de leurs 
+    partenaires sur le 
+    marché intermédiaire et/ou sur le marché final.
+    \item  En effet, les EV ou RV portent sur les conditions d’achat/vente des
+     B$\&$S intermédiaires et/ou les conditions de revente des B$\&$S finaux.
+    \item \textbf{\underline{Exemple}} : distribution exclusive territoriale
+     (exemple de l’exercice d’application, distribution sélective, quota d’achat, 
+     prix de revente imposé par le producteur à ses distributeurs.
+\end{enumerate}
+
+\framebreak
+
+\item Pourquoi sont-elles surveillées 
+par les autorités de la concurrence? Sont-elles 
+automatiquement sanctionnées?
+\begin{enumerate}[$\star$]
+\item Ces pratiques sont surveillées par les autorités de la concurrence dans 
+la mesure où elles ont pour la plupart un effet anti-concurrentiel.
+\item Selon les auteurs de l’école de Harvard, les EV sont sous-tendues par une logique de recherche 
+ou de renforcement de la position dominante de la part des firmes.
+\item La restriction de la concurrence induite par les EV peut tout d’abord être intra-marque.
+\item A titre d’exemple, la distribution exclusive territoriale a pour objectif, 
+du point de vue d’un producteur, de réduire 
+la concurrence entre les distributeurs du même B\&S sur le marché final. 
+\item Cela peut avoir pour conséquence le cloisonnement vertical des marchés. 
+\item De la même manière, la pratique des prix de revente imposés sur le marché final 
+restreint la concurrence par les prix entre les distributeurs d’un même bien.
+\item La restriction de la concurrence peut également être inter-marque. 
+\item On pense ici notamment aux restrictions verticales qui peuvent venir en soutien à 
+des ententes horizontales. 
+\item Par exemple, les prix de reventes imposés à leurs distributeurs respectifs
+ peuvent permettre à différents producteurs d’augmenter l’efficacité de leur pratique collusive.
+ \item En dépit de leur effet anti-concurrentiel, les restrictions verticales peuvent
+  également améliorer l’efficacité économique au sens large. 
+ \item Cela a été la position défendue par les auteurs de l’école de Chicago. 
+ \item Pour cette raison, elles ne sont pas nécessairement sanctionnées par les autorités
+  de la concurrence au niveau communautaire ou national. 
+ \item Cela explique également pourquoi les EV ont été traitées avec indulgence par les 
+ autorités de la concurrence aux
+  E-U et en Europe au moins jusque dans les années 1990. 
+ \item Sur ce point, on peut notamment mentionner le fait que les relations verticales peuvent 
+ être une solution au problème de la double marge (cf exercice d’application).
+ \item Lorsque deux entreprises situées à des niveaux différents de la filière détiennent 
+ un pouvoir de marché, chacune impose sa marge : une marge est prélevée sur le marché intermédiaire ; une marge est prélevée sur le marché final.
+ \item Cet échec de coordination a un impact négatif sur le bien-être social.
+ \item En effet, cette double-marge impact négativement à la fois le surplus du 
+ consommateur et le surplus des deux firmes.
+ \item Le producteur et le distributeur se nuisent mutuellement lorsqu’ils ne 
+ coordonnent par leur politique tarifaire.
+ \item Certaines RV peuvent constituer solution au problème de la double marge. 
+ \item On peut également noter que les RV peuvent avoir pour objectif, du point de vue d’un producteur, d’améliorer le fonctionnement 
+ de son réseau de distribution ou le service de vente. 
+ \item On pense ici notamment à la distribution sélective par
+  laquelle des firmes en amont de la filière choisissent des distributeurs agréés.
+  \item Ainsi, selon l’autorité de la concurrence :
+  \begin{mdframed}
+  «La jurisprudence tant nationale qu'européenne autorise les marques dont l'image 
+  est associée au luxe à contrôler étroitement la situation 
+  des points de vente qui distribuent la marque et à vérifier 
+  la qualité de la présentation de leurs produits de façon à assurer leur mise en
+   valeur : c'est la distribution sélective »
+  \end{mdframed}
+  \item Dans la mesure où les EV ont des effets négatifs et des effets bénéfiques, les autorités
+   de la concurrence adoptent une approche conséquentialiste.
+  \item  Les ententes verticales se sont par interdites en soi (comme c’est le cas des cartels
+   ou des prix de prédation).
+  \item Du point de vue des autorités de la concurrence, la difficulté est d’estimer si les effets
+   bénéfiques peuvent l’emporter sur les effets négatifs anti-concurrentiels
+  \end{enumerate}
+
+\framebreak
+\item Quelles rationalités économiques, du point de vue des fournisseurs 
+pouvez-vous identifier pour expliquer la mise en oeuvre de cette 
+entente verticale ? Pourquoi cette entente a-t-elle été sanctionnée ?
+\begin{enumerate}[$\star$]
+\item Ce cas illustre parfaitement les effets potentiellement positifs et
+ en l’occurrence surtout négatif que peut avoir une EV. 
+\item Du point de vue des fournisseurs, la rationalité économique était de restreindre 
+la concurrence par
+ les prix au niveau de la distribution de leurs produits. 
+ \item Il s’agit donc d’un cas typique d’une restriction de la concurrence 
+ intra-marque sur le marché final dont l’effet est dommageable pour le 
+ consommateur puisqu’il ne peut pas bénéficier de prix bas. 
+ \item Cette entente a été sanctionnée 
+ car l’imposition d’un prix de revente minimum constitue une restriction à la concurrence
+  trop importante.
+  \item On peut néanmoins imaginer que cette restriction de la concurrence pourrait
+   potentiellement avoir eu des effets bénéfiques pour le consommateur. 
+   \item En effet, les fournisseurs pourraient par ce biais inciter les distributeurs de
+    leur produit à ne pas se livrer à une guerre des prix et donc les inciter à améliorer
+     les services de vente. 
+     \item En effet, au moins théoriquement, 
+     la définition d’un prix de revente minimum de la part d’un producteur 
+     à ses distributeurs est une solution au problème du passager clandestin 
+     au niveau de la distribution.
+\end{enumerate}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+\bibliographystyle{jpe}
+\bibliography{../Biblio}
+\end{frame}
+
+\end{document}
