@@ -1,0 +1,320 @@
+%\documentclass[ignorenonframetext, compress, 9pt, xcolor=svgnames]{beamer} 
+\input{../Config_diapos}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{enumerate}   
+\usepackage{multirow}
+%\setbeamersize{text margin left=1.5em,text margin right=1.5em} 
+%\setbeamersize{text margin left=1.2cm,text margin right=1.2cm} 
+\setbeamersize{text margin left=1.5em,text margin right=1.5em} 
+%\usepackage{xr}
+%\externaldocument{Econometrie1_UGA_P2e}
+  \usepackage{eso-pic}
+%\newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{%
+%\put(\LenToUnit{0.9\paperwidth},\LenToUnit{0.85\paperheight}){#1}}}
+%\AddToShipoutPictureFG{
+ % \AtPagemyUpperLeft{{\includegraphics[width=1.1cm,keepaspectratio]{logoUGA2020.pdf}}}
+%}%
+
+%\setbeamercolor{title}{fg=black}
+%\setbeamercolor{frametitle}{fg=black}
+%\setbeamercolor{section in head/foot}{fg=black}
+%\setbeamercolor{author in head/foot}{bg=Brown}
+%\setbeamercolor{date in head/foot}{fg=Brown}
+\setbeamertemplate{section page}
+{
+    \begin{centering}
+    \begin{beamercolorbox}[sep=11pt,center]{part title}
+    \usebeamerfont{section title}\thesection.~\insertsection\par
+    \end{beamercolorbox}
+    \end{centering}
+}
+%\titlegraphic{\includegraphics[width=1cm]{logoUGA2020.pdf}}
+\title[]{ \textbf{Économie Industrielle}\footnote{responsable du cours: Sylvain Rossiaud} \\ (UGA, L3 Éco, S2) \\ }
+\subtitle{Travaux dirigés: No 6\\ FUSIONS\\
+(éléments de correction)}
+\date{\today}
+\author{Michal W. Urdanivia\inst{*}}
+\institute{\inst{*}UGA, Facult\'e d'\'Economie, GAEL, \\
+e-mail:
+ \href{
+     mailto:michal.wong-urdanivia@univ-grenoble-alpes.fr}{michal.wong-urdanivia@univ-grenoble-alpes.fr}}
+
+%\titlegraphic{\includegraphics[width=1cm]{logoUGA2020.pdf}
+%}
+
+\begin{document}
+
+%%% TIKZ STUFF
+\usetikzlibrary{positioning}
+\usetikzlibrary{snakes}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{matrix,shapes,arrows,fit,tikzmark}
+\usetikzlibrary{shapes}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzset{   
+        every picture/.style={remember picture,baseline},
+        every node/.style={anchor=base,align=center,outer sep=1.5pt},
+        every path/.style={thick},
+        }
+\newcommand\marktopleft[1]{
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-a) at (-.3em,.3em) {};%
+}
+\newcommand\markbottomright[2]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-b) at (0em,0em) {};%
+}
+\tikzstyle{every picture}+=[remember picture] 
+\tikzstyle{mybox} =[draw=black, very thick, rectangle, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} =[draw=black,fill=red, text=white]
+\tikzstyle{observed}=[draw,circle,fill=gray!50]
+
+\begin{frame}
+\titlepage
+\end{frame}
+\begin{frame}
+ \tableofcontents
+    \end{frame}
+%\begin{frame}
+%\frametitle{Contenu}
+%\tableofcontents[pausesections, pausesubsections]
+%\end{frame}
+
+%\section{Qu'est-ce que l’économétrie ? A quoi (à qui) ça sert ?}
+%\frame{\sectionpage}
+%\begin{frame}
+%  \tableofcontents  
+%\end{frame}
+
+
+\section{Rappels sur le modèle de Cournot(de base) et à $N$ firmes}
+\frame{\sectionpage}
+\begin{frame}[allowframebreaks]{Modèle}
+\begin{itemize}
+\item \textbf{\underline{Référence}}: \cite{belleflamme_peitz_2015}, chapitre 3.
+\item $N$ firmes avec des fonctions de coûts symétriques à coûts marginaux constants:
+\begin{align*}
+    c_i(q_i) &=cq_i \Rightarrow c^m_i(q_i):= \frac{\partial c}{\partial q_i}(q_i) = c, \ c > 0, i=1, \ldots, N.
+\end{align*}
+\item La demande est représenté par une fonction demande inverse linéaire:
+\begin{align*}
+p(Q) &= a-bQ, \ a, b > 0, Q = \sum_{i=1}^N q_i
+\end{align*}
+\item Le profit de chaque firme s'écrit alors: 
+\begin{align*}
+\pi_i(q_i, q_{(-i)}) &= p(Q)q_i - c_i(q_i) =  (a-bQ)q_i - cq_i
+\end{align*}
+où on note $q_{(-i)}$ le vecteur $(q_1, q_2, \ldots, q_N)$ sans sa ième composante $q_i$.
+\item Bien que $\pi_i$ dépende des quantités offertes par les autres firmes, 
+la firme $i$ maximise $\pi_i$ par rapport à $q_i$ qui est sa seule variable de décision.
+\item Autrement dit, chaque firme maximise son profit étant donné les décisions des autres.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Fonctions de meilleure réponse}
+    \begin{itemize}
+        \item La c.p.o. devant être vérifiée par le choix optimal de la firme $i$, $q_i^*$ s'écrit: 
+        \begin{align}
+            \frac{\partial \pi_i}{\partial q_i}(q_i^*) =0 &\Leftrightarrow a-2bq_i -b\sum_{j=1, j\neq i }^N q_j - c = 0\\
+            &\Leftrightarrow  a-2bq_i^* -b\left(Q - q_i^*\right) - c= 0,
+            \label{eq1}
+        \end{align}
+         qui définit le choix optimal de la firme $i$ comme une fonction(implicite) de $q_{(-i)}$ qui apparaît 
+         dans $Q$. 
+         \item Cette fonction est la meilleure réponse de la firme $i$ qu'on note $q^{mr}_i(q_{(-i)})$ avec 
+         $q_i^* = q^{mr}_i(q_{(-i)})$. Elle nous est donnée en utilisant \eqref{eq1} par: 
+        \begin{align} 
+            q_i^{mr}(q_{(-i)}) &= \frac{(a-c)}{b} - Q, \ i=1, \ldots, N.
+            \label{eq2}
+        \end{align}
+           \item L'équilibre du marché est un équilibre de Nash du jeux en information complète, où
+           la stratégie de chaque joueur est donné par \eqref{eq2}. 
+           Autrement dit le vecteur des quantités d'équilibre $q_1^*, \ldots, q_N^*$ vérifie 
+           \begin{align}
+               q_i^*&= q_i^{mr}(q_{(-i)}^*), \ i=1, \ldots, N.
+               \label{eq3}
+           \end{align}
+           où $q_i^{mr}$ est donnée par \eqref{eq2}. En notant $Q^*$ la quantité totale offerte 
+           à l'équilibre \eqref{eq3} s'écrit:
+           \begin{align*}
+            q_i^*&=\frac{(a-c)}{b} - Q^*, \ i=1, \ldots, N.
+           \end{align*}
+           \item On peut utiliser cette dernière égalité et voir que $Q^*$ vérifie:
+           \begin{align*}
+            \sum_{i=1}^N  q_i^* = N\left(\frac{(a-c)}{b} - Q^*\right)
+            &\Leftrightarrow Q^* = N\frac{(a-c)}{b} - NQ^*
+            \Rightarrow  Q^* = \frac{N}{(N+1)}\frac{(a-c)}{b}.
+           \end{align*}
+           \item On obtient alors les quantités offertes par chaque firme à l'équilibre en utilisant
+            \eqref{eq2}:
+            \begin{align*} 
+                q_i^{mr}(q_{(-i)^*}) &= \frac{(a-c)}{b} - Q^* = \frac{(a-c)}{(N+1)b}, \ i=1, \ldots, N.
+            \end{align*}
+            ce qui permets de calculer le prix et profits à l'équilibre: 
+            \begin{align*}
+                p^* &=p(Q^*) = a-bQ^* = a-b\left(\frac{N}{(N+1)}\frac{(a-c)}{b}\right)=\frac{a+Nc}{N+1},\\
+                \pi_i^* &=\pi_i(q_i^*,q_{(-i)}^*)=p^*q_i^* - cq_i^* = (p^*-c)q_i^* =\frac{1}{b}\left(\frac{a-c}{N+1}\right)^2
+            \end{align*}    
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Fusion}
+    \begin{itemize}
+    \item \textbf{\underline{Référence}}: \cite{belleflamme_peitz_2015}, chapitre 15.
+    \item Supposons que $K<N$  parmi les $N$ firmes fusionnent.
+    \item Le nombre de firmes est alors:
+    \begin{align*}
+        \tilde{N} &= \underbrace{N-K}_{\substack{\text{firmes qui}\\\text{ne fusionnent pas}}} + \underbrace{1}_{\text{firme fusionnée}}
+    \end{align*}
+    \item Dans ce cas d'après les résultats précédents le profit de chaque firme est à l'équilibre:
+    \begin{align*}
+        \pi_{i, \tilde{N}}^* &= \frac{1}{b}\left(\frac{a-c}{\tilde{N}+1}\right)^2
+        = \frac{1}{b}\left(\frac{a-c}{N-K+2}\right)^2.
+    \end{align*}
+    \item On se rappelle que leur profit avant la fusion est pour chacune:
+    \begin{align*}
+        \pi_i^* &= \frac{1}{b}\left(\frac{a-c}{N+1}\right)^2
+    \end{align*}
+    \item Ce qui donne un profit total pour les ayant fusionné avant la fusion de:
+    \begin{align*}
+        K\pi_i^* &= K\frac{1}{b}\left(\frac{a-c}{N+1}\right)^2
+    \end{align*}
+    \item Pour que la fusion soit profitable il faut alors que:
+    \begin{align*}
+        \pi_{i, \tilde{N}}^* \geq K\pi_i^*& \Leftrightarrow
+         \frac{1}{b}\left(\frac{a-c}{N-K+2}\right)^2  \geq K\frac{1}{b}\left(\frac{a-c}{N+1}\right)^2\\
+         &\Leftrightarrow \left(K-1)(-K^2+(2N-3)K-(N+1)^2\right) \geq 0\\
+         &\Leftrightarrow K > \frac{1}{2}\left(2N+3-\sqrt{4N+5}\right) > 0.8N
+    \end{align*}
+    \item C'est la \textbf{règle du 80\%}.
+\end{itemize}
+\end{frame}
+
+\section{TD: Partie 1}
+\frame{\sectionpage}
+\begin{frame}[allowframebreaks]{Exercice}
+    \begin{itemize}
+        \item Fonction de demande inverse: $p(Q) = 200-Q$, $Q=q_1+\ldots q_{10}$, 
+        \item Fonction de coût: $c_i(q_i) = 40q_i$, pour $i=1, \ldots, 10$.
+    \end{itemize}
+    \begin{enumerate}
+        \item $N = 10$: d'après ce qui précède:
+        \begin{enumerate}[$\star$]
+        \item $Q^*_{(N=10)} = 145.5$, 
+        \item $p^*_{(N=10)}=54.5$, 
+        \item $q_{(i, N=10)}^* = 14.5$,  
+        \item $\pi_{(i, N=10)}^*= 211.6$. 
+        \item Ce dernier chiffre donnant un surplus des producteurs de $SP_{(i, N=10)}^* = N\pi_{(N=10)}^*=2116$.
+        \item  On calcule aussi le surplus du consommateur qui dans le cas d'une fonction de demande inverse 
+        linéaire $p(Q) = a-bQ$ est donné par $SC(Q) = \frac{bQ^2}{2}$(voir \citet{belleflamme_peitz_2015}, chapitre 2).\\ Ici à l'équilibre 
+        pour $Q^*_{(N=10)} = 145.5$,
+         ce surplus est $SC_{(N=10)}^* = SC(Q_{(N=10)}^*) = \frac{145.5^2}{2}  = 10585.1$.
+        \end{enumerate}
+        
+        \item 3 firmes fusionnent et par conséquent $N=8$ désormais, d'où:
+        \begin{enumerate}[$\star$]
+            \item $Q^*_{N=8} = 142.2$, 
+            \item $p^*_{(N=8)}=57.8$, 
+            \item $q_{(i, N=8)}^* = 17.8$,  
+            \item $\pi_{(i, N=8)}^*= 316$. 
+            \item Ce dernier chiffre donnant un surplus des producteurs de 
+            $SP^* = N\pi_{(i, N=8)}^*=2528$.
+            \item On calcule aussi le surplus du consommateur  
+            $SC_{(N=8)}^* = SC(Q_{(N=8)}^*) = \frac{142.3^2}{2} = 10110.4$.
+            \framebreak
+            \item Ces résultats illustrent la règle du 80\% puisque le profit de la firme fusionnée 
+            est inférieur au profit total des trois firmes avant la fusion(soit $316$ 
+            après fusion contre $3\times 211.6$). 
+            \item Le profit des firmes ne participant pas à la fusion augmente. 
+            Elles bénéficient indirectement de celle-ci.
+            \item On note aussi que le surplus du consommateur diminue 
+            avec la fusion tandis que celui des firmes augmente.
+        \end{enumerate}
+
+        \item 3 firmes fusionnent et deviennent leader: concurrence du type Stackelberg. 
+        \begin{enumerate}[$\star$]
+            \item Jeux séquentiel: le leader joue d'abord, les autres firmes suivent. 
+            \item Résolution par induction à rebours: d'abord le problème d'optimisation 
+            des firmes qui suivent étant donné le choix du leader, ensuite le problème d'optimisation
+            du leader.
+            \item Supposons que les trois firmes qui fusionnent produisent la quantité $q_L$. 
+            \item \textbf{Dernière étape}: considérons une firme $i$ parmi les firmes qui n'ont pas fusionné, 
+            et notons $q_i$ la quantité qu'elle offre. 
+            \item La quantité totale offerte peut s'écrire:
+            \begin{align*}
+                Q&= q_i + q_L + \sum_{j=1; j\neq i}^7 q_j =  q_i + q_L + \underbrace{q_{-j}}_{:=\sum_{j=1; j\neq i}^7 q_j}
+            \end{align*}
+            \item La demande peut s'écrire alors:
+            \begin{align*}
+                p(Q) &= 200 - ( q_{-i} + q_L + q_i ).
+            \end{align*}
+            \item Et le profit de la firme $i$ s'écrit:
+            \begin{align*}
+                \pi_i^s(q_i) &=  \left[200 - ( q_{-i} + q_L + q_i ) - 40\right]q_i.
+            \end{align*}
+            \item La c.p.o. associée à la maximisation du profit permet de définir la fonction
+            de meilleure réponse de la firme $i$:
+            \begin{align*}
+             \frac{\partial \pi_i^s}{\partial q_i}(q_i^{s*}) = 0 &\Rightarrow 
+             q_i^{s*} = q_i^{mr^s}(q_{-i}, q_L) = 80 - \frac{(q_{-i} + q_L)}{2}.
+             \end{align*}
+             \item À l'équilibre toutes les firmes jouent leur meilleure stratégie et on note 
+             $q_{-i}^{s*}$ l'analogue à l'équilibre de $q_{-i}$, et $q_L^*$ la quantité produite 
+             à l'équilibre pas la firme leader(le trois ayant fusionné). Donc:
+             \begin{align*}
+                q_i^{s*} = 80 - \frac{(q_{-i}^{s*} + q_L^*)}{2} 
+             \end{align*}
+            \item Notons $Q^{s*}$ la quantité totale offerte par toutes les firmes 
+            qui n'ont pas fusionné à l'équilibre: 
+            \begin{align*}
+                Q^{s*} &= \sum_{i=1}^7 q_i^{s*}.
+            \end{align*}
+            \item La condition précédente peut alors s'écrire:
+            \begin{align*}
+                q_i^{s*} &= 80 - \frac{(Q^{s*} - q_i^{s*} + q_L^*)}{2} \\
+                &\Leftrightarrow  q_i^{s*} = 160 - Q^{s*} - q_L^* \\
+                &\Leftrightarrow \sum_{i=1}^7 q_i^{s*} = 7(160 - Q^{s*} - q_L^* )\\
+                &\Leftrightarrow  Q^{s*} = 7(160 - Q^{s*} - q_L^* )\\
+                &\Leftrightarrow 8Q^{s*} = 7(160 - q_L^*)\\
+                &\Leftrightarrow 8Q^{s*} = 7(160 - q_L^*)\\
+                &\Leftrightarrow Q^{s*} = \frac{7}{8}(160 - q_L^*)
+             \end{align*}
+             \item Cette quantité est la quantité produite par toutes les firmes qui n'ont pas 
+             fusionné à l'équilibre. 
+             \item \textbf{1ère étape}: maximisation du profit du leader. 
+             \item Son profit peut s'écrire:
+             \begin{align*}
+                 \pi_L(q_L) &= (160 - (q_L + \sum_{i=1}^7 q_i))q_L.
+             \end{align*}
+             \item En procédant comme habituellement(calcul de la c.p.o) et en notant $q_L^*$ la quantité optimale 
+             de la firme leader et $q^{mr}_L(\tilde{q})$ sa fonction de meilleure réponse avec $\tilde{q}:=(q_1, \ldots, q_7)$ on obtient: 
+             \begin{align*}
+              q^{mr}_L(\tilde{q}) = 80 - \frac{\sum_{i=1}^7 q_i}{2}
+             \end{align*}
+             \item L'équilibre correspond alors à:
+             \begin{align*}
+               q_L^* = q^{mr}_L(\tilde{q}^{s*}) = 80 - \frac{\sum_{i=1}^7 q_i^{s*}}{2} = 80 - \frac{Q^{s*}}{2}&=\frac{1}{2}\left[ \frac{7}{8}(160 - q_L^*)\right]\\
+               &\Rightarrow q_L^* 
+            \end{align*}
+
+        \end{enumerate}
+        
+
+
+
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+    \bibliographystyle{jpe}
+    \bibliography{../Biblio}
+    \end{frame}
+    
+    \end{document}
+    
