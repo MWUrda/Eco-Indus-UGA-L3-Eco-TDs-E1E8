@@ -1,3 +1,0 @@
-\select@language {french}
-\beamer@sectionintoc {1}{Exercice d\IeC {\textquoteright }application}{3}{0}{1}
-\beamer@sectionintoc {2}{Fondamentaux de la th\IeC {\'e}orie des co\IeC {\^u}ts de transaction}{8}{0}{2}

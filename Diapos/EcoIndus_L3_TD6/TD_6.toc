@@ -1,3 +1,0 @@
-\select@language {french}
-\beamer@sectionintoc {1}{Rappels sur le mod\IeC {\`e}le de Cournot(de base) et \IeC {\`a} $N$ firmes}{3}{0}{1}
-\beamer@sectionintoc {2}{TD: Partie 1}{11}{0}{2}
