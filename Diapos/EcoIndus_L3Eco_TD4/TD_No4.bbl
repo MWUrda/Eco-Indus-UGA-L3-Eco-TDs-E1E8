@@ -1,0 +1,12 @@
+\begin{thebibliography}{1}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem[{Belleflamme and Peitz(2015)}]{belleflamme_peitz_2015}
+Belleflamme, Paul and Martin Peitz. 2015.
+\newblock \emph{Industrial Organization: Markets and Strategies}.
+\newblock Cambridge University Press, 2 ed.
+
+\end{thebibliography}

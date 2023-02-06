@@ -1,0 +1,5 @@
+\babel@toc {french}{}
+\beamer@sectionintoc {1}{\IeC {\'E}quilibres de concurrence \IeC {\`a} la Cournot et d'entente}{3}{0}{1}
+\beamer@sectionintoc {2}{Strat\IeC {\'e}gie de d\IeC {\'e}viation d'une firme(c.\IeC {\`a}.d., de tricherie)}{7}{0}{2}
+\beamer@sectionintoc {3}{Stabilit\IeC {\'e} d'ententes: discussion}{9}{0}{3}
+\beamer@sectionintoc {4}{Jeu/concurrence \IeC {\`a} la Cournot infiniment r\IeC {\'e}p\IeC {\'e}t\IeC {\'e}}{17}{0}{4}
