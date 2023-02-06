@@ -1,0 +1,14 @@
+\begin{thebibliography}{1}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem[{Tirole(1988)}]{Tirole_BookIO_1988}
+Tirole, Jean. 1988.
+\newblock \emph{{The Theory of Industrial Organization}}, \emph{MIT Press
+  Books}, vol.~1.
+\newblock The MIT Press.
+\newblock \urlprefix\url{https://ideas.repec.org/b/mtp/titles/0262200716.html}.
+
+\end{thebibliography}

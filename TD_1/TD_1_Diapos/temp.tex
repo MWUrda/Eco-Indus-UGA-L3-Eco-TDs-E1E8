@@ -1,0 +1,18 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+\title{The Title}
+\author{The Author}
+\date{today}
+\begin{document}
+\section{One}
+\begin{frame}[label=main]
+suspect someone might ask about supplemental material
+\hyperlink{supplemental}{beamerbutton{here}}.
+\end{frame}
+\appendix
+\section{More}
+\begin{frame}[label=supplemental]
+Supplemental content.
+Back to hyperlink{main}{beamerbutton{main}}.
+\end{frame}
+\end{document}

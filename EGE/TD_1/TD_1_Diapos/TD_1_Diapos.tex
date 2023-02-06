@@ -1,0 +1,397 @@
+%\documentclass[ignorenonframetext, compress, 9pt, xcolor=svgnames]{beamer} 
+\input{../../../Config_diapos}
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{enumerate}   
+\usepackage{multirow}
+\usepackage{txfonts}
+\usepackage{mathrsfs}
+\usepackage{pgfplots}
+\pgfplotsset{compat = newest}
+\usetikzlibrary{positioning, arrows.meta}
+\usepgfplotslibrary{fillbetween}
+\newcommand{\A}{(0,0) ++(135:2) circle (2)}
+\newcommand{\B}{(0,0) ++(45:2) circle (2)}
+\DeclareMathOperator{\C}{C}
+\DeclareMathOperator{\util}{u}
+%\setbeamersize{text margin left=1.5em,text margin right=1.5em} 
+%\setbeamersize{text margin left=1.2cm,text margin right=1.2cm} 
+\setbeamersize{text margin left=1.5em,text margin right=1.5em} 
+%\usepackage{xr}
+%\externaldocument{Econometrie1_UGA_P2e}
+  \usepackage{eso-pic}
+%\newcommand\AtPagemyUpperLeft[1]{\AtPageLowerLeft{%
+%\put(\LenToUnit{0.9\paperwidth},\LenToUnit{0.85\paperheight}){#1}}}
+%\AddToShipoutPictureFG{
+ % \AtPagemyUpperLeft{{\includegraphics[width=1.1cm,keepaspectratio]{logoUGA2020.pdf}}}
+%}%
+
+%\setbeamercolor{title}{fg=black}
+%\setbeamercolor{frametitle}{fg=black}
+%\setbeamercolor{section in head/foot}{fg=black}
+%\setbeamercolor{author in head/foot}{bg=Brown}
+%\setbeamercolor{date in head/foot}{fg=Brown}
+\AtBeginSection[]
+  {
+    \ifnum \value{framenumber}>1
+      \begin{frame}<beamer>
+      \frametitle{PLAN}
+      \tableofcontents[currentsection]
+      \end{frame}
+    \else
+    \fi
+  }
+\setbeamertemplate{section page}
+{
+    \begin{centering}
+    \begin{beamercolorbox}[sep=11pt,center]{part title}
+    \usebeamerfont{section title}\thesection.~\insertsection\par
+    \end{beamercolorbox}
+    \end{centering}
+}
+%\titlegraphic{\includegraphics[width=1cm]{logoUGA2020.pdf}}
+\title[]{ \textbf{ÉCONOMIE INDUSTRIELLE}\footnote{Responsable du cours: Sylvain Rossiaud}\\(\textbf{UGA, L3 EGE, S2})}
+\subtitle{TRAVAUX DIRIGÉS: TD 1}
+\date{\today}
+\author{Michal W. Urdanivia\inst{*}}
+\institute{\inst{*}UGA, Facult\'e d'\'Economie, GAEL, \\
+e-mail:
+ \href{
+     mailto:michal.wong-urdanivia@univ-grenoble-alpes.fr}{michal.wong-urdanivia@univ-grenoble-alpes.fr}}
+
+%\titlegraphic{\includegraphics[width=1cm]{logoUGA2020.pdf}
+%}
+
+\begin{document}
+
+%%% TIKZ STUFF
+\usetikzlibrary{positioning}
+\usetikzlibrary{snakes}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{matrix,shapes,arrows,fit,tikzmark}
+\usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzset{   
+        every picture/.style={remember picture,baseline},
+        every node/.style={anchor=base,align=center,outer sep=1.5pt},
+        every path/.style={thick},
+        }
+\newcommand\marktopleft[1]{
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-a) at (-.3em,.3em) {};%
+}
+\newcommand\markbottomright[2]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-b) at (0em,0em) {};%
+}
+\tikzstyle{every picture}+=[remember picture] 
+\tikzstyle{mybox} =[draw=black, very thick, rectangle, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} =[draw=black,fill=red, text=white]
+\tikzstyle{observed}=[draw,circle,fill=gray!50]
+
+\begin{frame}
+\titlepage
+\end{frame}
+\begin{frame}
+ \tableofcontents
+    \end{frame}
+%\begin{frame}
+%\frametitle{Contenu}
+%\tableofcontents[pausesections, pausesubsections]
+%\end{frame}
+
+%\section{Qu'est-ce que l’économétrie ? A quoi (à qui) ça sert ?}
+%\frame{\sectionpage}
+%\begin{frame}
+%  \tableofcontents  
+%\end{frame}
+\section{Introduction}
+\frame{\sectionpage}
+
+\begin{frame}
+  [allowframebreaks]{Références}
+  \begin{itemize}
+\item En premier lieu : \href{https://cours.univ-grenoble-alpes.fr/course/view.php?id=5946\#section-1}{Le cours magistral de Sylvain}.
+\item Un classique: \cite{Tirole_BookIO_1988}.
+\end{itemize}
+\end{frame}
+\section{Exercice 1}
+\frame{\sectionpage}
+\begin{frame}[allowframebreaks]{\insertsection}
+\framesubtitle{Modèle de base de concurrence à la Bertrand}
+\begin{itemize}
+    \item 2 firmes identiques produisent un bien homogène.  
+    \item Coût de la firme $i=1, 2$:
+    \begin{align*}
+        c_i(q_i)=cq_i \Rightarrow c^m_i(q_i):= \frac{\partial c_i(q_i)}{\partial q_i} = c, \ \text{avec} \ c > 0.
+    \end{align*}
+    \item \underline{}\textbf{Remarque:} pour l'exercice, $a=20$, $b=1/5$,   $c=2$.
+    \item Demande donnée par: 
+    \begin{align*}
+        q = \frac{a}{b} -\frac{p}{b}, \ \text{avec} \ a, b > 0.
+    \end{align*}
+    \item Elles se concurrencent par les prix avec $p_i$ le prix de $i$.
+    \item Les biens produits étant homogènes, tous les consommateurs consomment celui produit par la firme 
+    qui propose le prix le plus bas. 
+    \item Le profit de $i$ est alors(avec $j=1, 2$, $j\neq i$)
+    \begin{align*}
+        \pi_i &=\left\{
+            \begin{array}{ll}
+                (p_i-c)\left(  \frac{a}{b} -\frac{p_i}{b} \right) & \ \text{si} \ p_i<p_j.\\
+                \frac{1}{2}(p_i-c)\left(  \frac{a}{b} -\frac{p_i}{b} \right) & \ \text{si} \ p_i = p_j.\\
+                 0& \ \text{si} \ p_i > p_j.
+            \end{array}
+        \right.
+    \end{align*}
+    \item \textbf{\underline{Meilleure réponse de $i$:}}
+    \begin{align*}
+         p^{mr}_i(p_j) &=
+         \left\{
+         \begin{array}{ll}
+            p_j - \epsilon & \ \text{si} \ p_j  -\epsilon> c\\
+            c & \ \text{sinon},
+         \end{array}
+         \right.
+    \end{align*}
+    où $\epsilon > 0$.
+    \item \textbf{\underline{Résultat(Paradoxe de Bertrand)}}: Le prix d'équilibre $p^*$ est tel que $p^* = p^{mr}_1(p_2) = p^{mr}_2(p_1) =c=c^m_1(q_1) = c^m_2(q_2)$.
+    \item En particulier, avec les données de l'exercice $p^* = 2$.
+\end{itemize}
+\end{frame}
+
+\section{Exercice 2}
+\frame{\sectionpage}
+\begin{frame}[allowframebreaks]{\insertsection}
+\framesubtitle{Modèle de base de concurrence à la Cournot}
+\begin{itemize}
+\item Deux firmes produisent un bien homogène. 
+\item Coûts identiques avec: 
+\begin{align}
+    c_i(q_i) &= 1 + 2q_i \Rightarrow c_i^m(q_i):=\frac{\partial c_i(q_i)}{\partial q_i}= 2, \ i=1, 2.
+    \label{eq1}
+\end{align}
+\item Demande sur le marché: 
+\begin{align}
+Q_d(p) = 400 - 100p &\Rightarrow p(Q) \coloneqq Q_d^{-1}(Q)= 4-\frac{Q}{100} \ (\text{Fonction de demande inverse}),
+    \label{eq2}
+\end{align}
+où $Q=q_1+q_2$.
+\item Concurrence par les quantités, c.à.d., $q_i$ est la variable de décision de $i$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{\insertsection}
+\framesubtitle{Modèle de base de concurrence à la Cournot: équilibre}
+    \begin{itemize}
+        \item Profit $i=1, 2$:
+        \begin{align}
+            \pi_i(q_i) &= pq_i - c_i(q_i) = \left(\underbrace{4-\frac{Q}{100}}_{ =  p(Q) \ \text{par \eqref{eq2}}}\right)q_i 
+            - (\underbrace{1+2q_i}_{=c_i(q_i) \ \text{par \eqref{eq1}}}) \nonumber\\
+            &= \left(4-\frac{(q_i + q_j)}{100}\right)q_i - (1+ 2q_i) \nonumber\\
+            &= 2q_i - 1 - \frac{(q_j + q_i)}{100}q_i.
+            \label{eq3}
+        \end{align}
+        où $j=1,2$, $j\neq i$.
+        \item $i$ maximise \eqref{eq3} par rapport à $q_i$ pour $q_j$ donné. 
+        \item Soit $q_i*$ la valeur de $q_i$ où  \eqref{eq3} est maximisée. Elle peut être obtenu à partir de la c.p.o.:
+        \begin{align}
+          \frac{\partial \pi_i}{\partial q_i}(q_i^*) = 0 \Leftrightarrow 2 -\frac{q_j}{100} - \frac{q_i^*}{50} = 0
+             \Rightarrow q_i^* = 100 - \frac{q_j}{2} =: q_i^{mr}(q_j)  \ (\text{Meilleure réponse de $i$}).
+             \label{eq4}
+        \end{align}
+        \item L'équilibre est tel que les deux firmes maximisent leur profit en fixant leurs choix optimaux  $q_1^*$ et $q_2^*$  d'après leurs fonctions de meilleur réponse respectives telles que définies par \eqref{eq4}.
+        \item Il est obtenu comme solution du système donné par:
+        \begin{align*}
+        q_i^* &= q_i^{mr}(q^*_j) , \ i, j = 1, 2; \ i\neq j,
+        \end{align*}
+        soit,
+        \begin{align*}
+            \left\{
+            \begin{array}{l}
+            q_1^* = 100 - \frac{q_2^*}{2}\\
+            q_2^* = 100 - \frac{q_1^*}{2}
+            \end{array}
+            \right.
+            &\Rightarrow q_1^* = q_2^* = 200/3 \approx 66.67,
+        \end{align*}
+        d'où:
+        \begin{enumerate}[-]
+        \item $Q^* = q_1^* +q_2^* = 400/3\approx 133.33$,
+        \item $p^* = p(Q^*) = 16$,
+        \item $\pi_1(q_1^*) = \pi_2(q_2^*) \approx 43.67$.
+        \end{enumerate}
+        \item \textbf{\underline{Commentaire:}} c'est un équilibre de Nash qui résulte de ce que les deux firmes maximisent leurs profits et il est supposé 
+        que les deux firmes savent cela et connaissent la forme de leurs fonctions de réaction. 
+        Dans ce modèle les quantités sont des \underline{\textbf{substituts stratégiques}}.
+    \end{itemize}
+\end{frame}   
+
+\begin{frame}[allowframebreaks]{\insertsection}
+\framesubtitle{Cournot avec asymmétrie sur les coûts}
+    \begin{itemize}
+        \item Fonctions de coûts: 
+        \begin{align*}
+            c_1(q_1) &= 1+2q_1\\
+            c_2(q_2) &= 1+\frac{5q_1}{2}.
+        \end{align*}
+        \item 1 présente un avantage en termes de coût avec un coût marginal inférieur à celui de 2.
+        \item La meilleure réponse de 1 est donné par \eqref{eq4}(fonction de coût inchangée par rapport à cette question). 
+        \item Celle de 2 peut être obtenue selon la mêmes démarche que dans la question précédente. On obtient: 
+        \begin{align*}
+            q_2^{mr}(q_1) &= 75 - \frac{q_1}{2}.
+        \end{align*}
+        \item Le vecteur de prix d'équilibre $(q_1^{*a}, q_2^{*a})$ est alors obtenu comme solution dun système: 
+        \begin{align*}
+        \left\{
+        \begin{array}{l}
+        q_1^{*a} = 100 - \frac{q_2^{*a}}{2}\\
+        q_2^{*a} = 75 - \frac{q_1^{*a}}{2}
+        \end{array}
+        \right.
+        &\Rightarrow 
+        \left\{
+        \begin{array}{l}
+        q_1^{*a} =83.33,\\
+         q_2^{*a} = 33.34.
+        \end{array} \right.
+        \end{align*}
+       d'où 
+       $Q^{*a} = q_1^{*a} + q_2^{*a} = 116.67$, $p^{*a} = p(Q^{*a}) = 2.83$, $\pi_1(q_1^{*a}) = 68.16$, $\pi_2(q_2^{*a}) = 10$.
+ 
+    \end{itemize}
+
+\end{frame}
+
+\section{Exercice 3}
+\frame{\sectionpage}
+\begin{frame}[allowframebreaks]{\insertsection}
+\framesubtitle{Modèle oligopolistique séquentiel}
+\begin{itemize}
+\item Deux firmes produisent des biens homogènes où: 
+\begin{enumerate}[-]
+\item la firme 1 est leader:  elle fixe son niveau de production $q_1$,
+\item la firme 2 est suiveuse : elle choisit son niveau de production $q_2$ après avoir observé $q_1$
+\end{enumerate}
+\item Fonction de demande inverse: 
+\begin{align}
+    P(Q) &= 200 - Q, \ Q=q_1+q_2.
+\label{eq1}
+\end{align}
+\item Coûts fixes nuls, et coûts marginal constant:
+\begin{align}
+    c_i(q_i) &= 60q_i \Rightarrow c^{m}_i(q_i) :=\frac{\partial c_i}{\partial q_1}(q_i) = 60, \ \text{pour} \ i= 1, 2.
+    \label{eq2}
+\end{align}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{\insertsection}
+\framesubtitle{(a)}
+
+    \begin{itemize}
+        \item \underline{\textbf{Fonction de meilleure réponse de la firme 2}}
+        \begin{enumerate}[$\cdot$]
+        \item Profit de $2$: 
+        \begin{align}
+            \pi_2(q_1, q_2) &= Pq_2 - c_2(q_2) = \underbrace{\left(200-(q_1+q_2)\right)}_{\text{en raison de \eqref{eq1}}}q_2 - 
+            \underbrace{60q_2}_{\text{par \eqref{eq2}}},
+            \label{eq3}
+        \end{align}
+        \item $2$ décide du niveau $q_2$ de sorte à maximiser $\pi_2$. Notons $q_2^*$ ce niveau qui est défini par:
+        \begin{align*}
+            q^*_2 &= \argmax_{q_2} \pi_2(q_1, q_2) ,
+        \end{align*}
+         et vérifie la c.p.o.,
+         \begin{align}
+             \frac{\partial \pi_2(q_1, q_2^*)}{\partial q_2} = 0 \Leftrightarrow 140-q_1-2q^*_2 = 0,
+             \label{eq4}
+         \end{align}
+        qui défini $q^*_2$ comme fonction de $q_1$, c.à.d., \textbf{\underline{la fonction de meilleure réponse de 2}}. 
+        On la note $q^{mr}_2(q_1)$ et elle est donc donnée en utilisant \eqref{eq4} par,
+        \begin{align}
+            q^*_2 & = 70 - \frac{q_1}{2}=: q^{mr}_2(q_1)
+           \label{eq5}
+        \end{align}
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{\insertsection}
+\framesubtitle{(b)}
+
+    \begin{itemize}
+\item \underline{\textbf{ Équilibre}}
+        \begin{enumerate}[$\cdot$]
+            \item La fonction de profit de 1 présente une forme similaire à celle de 2:
+            \begin{align}
+                \pi_1\left(q_1, q_2\right) &= Pq_1 - c_1(q_1) = \left(200-(q_1+q_2)\right)q_1 - 60q_1.
+                \label{eq6}
+            \end{align}
+            \item En outre 1 connaît le niveau de production que 2 fixe en fonction du sien, 
+            donné par \eqref{eq5} et ce faisant \eqref{eq6} peut s'écrire:
+            \begin{align}
+                \pi_1\left(q_1, q^{mr}_2(q_1)\right) &= \left(200-(q_1+q_2)\right)q_1 - 60q_1 \nonumber\\
+                &= 140q_1 - q_1^2 - q^{mr}_2(q_1)q_1 \nonumber \\
+                &= 140q_1 - q_1^2 - \underbrace{\left(70 - \frac{q_1}{2}\right)}_{=q^{mr}_2(q_1)}q_1\nonumber\\
+                &= 70q_1 - \frac{q_1^2}{2} =: \pi(q_1),
+                \label{eq6}
+            \end{align}
+            qui ne dépends que de $q_1$. 
+            \item $1$ maximise donc \eqref{eq6}. Le maximum est atteint pour $q_1^*$ qui vérifie la c.p.o.:  
+            \begin{align}
+                \frac{\partial \pi_1(q_1^*)}{\partial q_1} =0 & \Leftrightarrow 
+                70 - q_1^* =0 \Rightarrow q_1^* = 70.
+                \label{eq7}
+            \end{align}
+            \item Il en résulte par \eqref{eq5}:
+            \begin{align*}
+                q^*_2 &= q^{mr}_2(q_1^*) = 70 - \frac{q_1^*}{2}=35.
+            \end{align*}
+            \item Ceci qui implique une quantité produite à l'équilibre de $Q^* = q_1^* + q_2^* = 105$, 
+            un prix de $P^* = P(Q^*) = 95$, pour de profits $\pi_1(q_1^*) = 2450$, et 
+            $\pi_2(q_2^*) = 1225$.
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+\begin{frame}[allowframebreaks]{\insertsection}
+\framesubtitle{(c)}
+   \begin{itemize}
+\item \underline{\textbf{Comparaison avec Cournot}}
+ \begin{enumerate}[$\cdot$]
+\item Pour rappel dans un Cournot de base(voir cours, et TD1) avec:
+\begin{enumerate}[$\cdot$]
+\item des coûts $c_i(q_i) = cq_i$, $c>0$, $i=1, 2$,
+\item et une demande $P(Q) = a - bQ$, $Q=q_1+q_2$, $a, b > 0$,
+\end{enumerate}
+\item L'équilibre est (où l'indice sup "ec" est pour "équilibre de Cournot"):
+\begin{align*}
+    q_1^{(ec)} = q_2^{(ec)} = q^{(ec)} = \frac{a-c}{3b},
+\end{align*}
+d'où ici(avec $a=300, b=1, c=20$): 
+\begin{enumerate}[-]
+\item $q_1^{(ec)}=q_2^{(ec)}\approx 46.67$, 
+\item $Q^{(ec)} = q_1^{(ec)}+q_2^{(ec)} \approx 93.33$,
+\item $P^{(ec)} \approx 106.67$.
+\item $\pi^{(ec)}_1 = \pi^{(ec)}_2 = 2178$.
+\end{enumerate}
+
+\item \textbf{\underline{Remarque}}: en Cournot les meilleures réponses sont pour $i=1, 2$:
+\begin{align*}
+    q_i^{mr}&=\frac{(a-c)}{2b} - \frac{q_j}{2}, \ j=1, 2, j\neq i.
+\end{align*} 
+\item Par rapport au modèle de Cournot la firme 1 possède l'avantage de jouer en premier ce que la firme 2 doit anticiper.
+\end{enumerate}
+\end{itemize}
+\end{frame}
+\begin{frame}[allowframebreaks]{Références}
+\bibliographystyle{jpe}
+\bibliography{../../../Biblio}
+\end{frame}
+
+\end{document}
