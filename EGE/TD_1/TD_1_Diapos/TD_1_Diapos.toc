@@ -1,0 +1,5 @@
+\select@language {french}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Exercice 1}{6}{0}{2}
+\beamer@sectionintoc {3}{Exercice 2}{10}{0}{3}
+\beamer@sectionintoc {4}{Exercice 3}{18}{0}{4}
